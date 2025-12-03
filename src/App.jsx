@@ -7,6 +7,8 @@ import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import Feed from "./components/Feed";
 import EditProfile from "./components/EditProfile"
+import Connections from "./components/Connections"
+import FriendRequests from "./components/FriendRequests"
 function App() {
   return (
     <>
@@ -19,6 +21,9 @@ function App() {
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/feed" element={<Feed />}></Route>
             <Route path="/editprofile" element={<EditProfile />}></Route>
+             <Route path="/connections" element={<Connections />}></Route>
+             <Route path="/friendreq" element={<FriendRequests />}></Route>
+
           </Route>
         </Routes>
       </BrowserRouter>
