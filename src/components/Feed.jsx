@@ -5,7 +5,7 @@ import { addToFeed } from "../utils/feedslice";
 
 function Feed() {
   const dispatch = useDispatch();
-  const feed = useSelector((state) => state.feed);  // ✅ get feed from redux
+  const feed = useSelector((state) => state.feed);  
     const user= useSelector((state) => state.user); 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +15,7 @@ function Feed() {
         });
 
         console.log(res.data);
-        dispatch(addToFeed(res.data.feed)); // store in redux
+        dispatch(addToFeed(res.data.feed)); 
       } catch (err) {
         console.error(err);
       }

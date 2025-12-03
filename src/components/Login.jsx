@@ -10,14 +10,13 @@ function Login() {
 
   const [errors, setErrors] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleClick = async () => {
-
     try {
       const res = await axios.post(
         "http://localhost:3000/auth/login",
@@ -25,23 +24,21 @@ function Login() {
         { withCredentials: true }
       );
 
-     
       if (res.data.message) {
         const msg = res.data.message;
 
         if (msg.includes("user"))
-          setErrors(prev => ({ ...prev, email: msg }));
+          setErrors((prev) => ({ ...prev, email: msg }));
 
         if (msg.includes("password"))
-          setErrors(prev => ({ ...prev, password: msg }));
+          setErrors((prev) => ({ ...prev, password: msg }));
 
-        return; 
+        return;
       }
 
       dispatch(addUser(res.data));
-    setErrors({ email: "", password: "" });
+      setErrors({ email: "", password: "" });
       navigate("/feed");
-
     } catch (err) {
       console.log(err);
     }
@@ -66,10 +63,9 @@ function Login() {
             placeholder="Type here"
             value={email}
             onChange={(e) => {
-    setEmail(e.target.value);
-    setErrors(prev => ({ ...prev, email: "" })); 
-}}
-
+              setEmail(e.target.value);
+              setErrors((prev) => ({ ...prev, email: "" }));
+            }}
           />
 
           {/* NEW: Display email error */}
@@ -87,10 +83,9 @@ function Login() {
             placeholder="Type here"
             value={password}
             onChange={(e) => {
-    setPassword(e.target.value);
-    setErrors(prev => ({ ...prev, password: "" }));
-}}
-
+              setPassword(e.target.value);
+              setErrors((prev) => ({ ...prev, password: "" }));
+            }}
           />
 
           {/* NEW: Display password error */}

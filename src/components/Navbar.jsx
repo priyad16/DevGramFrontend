@@ -27,13 +27,12 @@ function Navbar() {
   return (
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">DevGram</a>
+       <Link to="/"> <a className="btn btn-ghost text-xl">DevGram</a></Link>
       </div>
 
       {user && (
   <div className="flex-none flex items-center gap-3 mr-5">
 
-    {/* 👋 Greeting text */}
     <span className="font-medium text-base">
       Hello, {user.firstName}
     </span>
@@ -69,6 +68,9 @@ function Navbar() {
         </li>
         <li><a>Settings</a></li>
         <li onClick={handleLogout}><a>Logout</a></li>
+        <Link to="/connections"><li ><a>Connections</a></li></Link>
+        <Link to="/friendreq"><li ><a>Friend Requests</a></li></Link>
+
       </ul>
     </div>
   </div>
