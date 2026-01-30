@@ -14,18 +14,21 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />}>
-            {/* <Route path="/" element={<Main />}></Route> */}
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Signup />}></Route>
-            <Route path="/profile" element={<Profile />}></Route>
-            <Route path="/feed" element={<Feed />}></Route>
-            <Route path="/editprofile" element={<EditProfile />}></Route>
-             <Route path="/connections" element={<Connections />}></Route>
-             <Route path="/friendreq" element={<FriendRequests />}></Route>
+  <Route path="/" element={<Main />}>
 
-          </Route>
-        </Routes>
+    {/* Default page */}
+    <Route index element={<Signup />} />
+
+    <Route path="login" element={<Login />} />
+    <Route path="profile" element={<Profile />} />
+    <Route path="feed" element={<Feed />} />
+    <Route path="editprofile" element={<EditProfile />} />
+    <Route path="connections" element={<Connections />} />
+    <Route path="friendreq" element={<FriendRequests />} />
+
+  </Route>
+</Routes>
+
       </BrowserRouter>
     </>
   );

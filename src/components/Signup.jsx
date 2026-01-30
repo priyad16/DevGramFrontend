@@ -1,4 +1,6 @@
-import { use, useState } from "react";
+import {  useState } from "react";
+import { useNavigate } from "react-router";
+
 import axios from "axios";
 function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -35,6 +37,8 @@ function Signup() {
       setEmail("");
       setPassword("");
       setGender("");
+      navigate("/login");
+
     } catch (err) {
       setErrorMsg(err.response?.data?.message || "Something went wrong");
     }
