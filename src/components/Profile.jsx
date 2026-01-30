@@ -19,8 +19,8 @@ function Profile() {
           </div>
         </div>
         <Link to="/editprofile">
-        <button
-          className="
+          <button
+            className="
     px-4 py-2 
     text-sm font-semibold tracking-wide
     rounded-xl
@@ -33,9 +33,9 @@ function Profile() {
     hover:text-primary
     transition-all duration-200
   "
-        >
-          Edit Profile
-        </button>
+          >
+            Edit Profile
+          </button>
         </Link>
 
         {/* <p className="list-col-wrap text-xs">

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { addRequests } from "../utils/Requestslice";
+import { addRequests, removeRequest } from "../utils/Requestslice";
 import { useSelector,useDispatch } from "react-redux";
 function FriendRequests(){
     const dispatch = useDispatch();
@@ -19,6 +19,65 @@ function FriendRequests(){
     }
     getReq();
     },[])
+let acceptConnection = async (id) => {
+  try {
+    const res = await axios.patch(
+      "http://localhost:3000/connection/review",
+      {
+        connectionId: id,
+        action: "accepted"
+      },
+      {
+        withCredentials: true
+      }
+    );
+
+    console.log(res.data);
+    dispatch(removeRequest(id));
+  } catch (err) {
+    console.error(err.response?.data || err.message);
+  }
+};
+
+let rejectConnection=async (id) => {
+  try {
+    const res = await axios.patch(
+      "http://localhost:3000/connection/review",
+      {
+        connectionId: id,
+        action: "rejected"
+      },
+      {
+        withCredentials: true
+      }
+    );
+
+    console.log(res.data);
+    dispatch(removeRequest(id));
+  } catch (err) {
+    console.error(err.response?.data || err.message);
+  }
+};
+
+let ignoreConnection=async (id) => {
+  try {
+    const res = await axios.patch(
+      "http://localhost:3000/connection/review",
+      {
+        connectionId: id,
+        action: "ignore"
+      },
+      {
+        withCredentials: true
+      }
+    );
+
+    console.log(res.data);
+    dispatch(removeRequest(id));
+  } catch (err) {
+    console.error(err.response?.data || err.message);
+  }
+};
 
    return (
     <ul className="list bg-base-100 rounded-box shadow-md w-7/12 my-10 m-auto">
@@ -63,8 +122,10 @@ function FriendRequests(){
 
             
             <div className="ml-auto flex gap-2 my-2">
-              <button className="btn btn-success btn-xs text-md px-4 py-3">Accept</button>
-              <button className="btn btn-error btn-xs text-md px-4 py-3">Reject</button>
+              <button className="btn btn-success btn-xs text-md px-4 py-3" onClick={()=>acceptConnection(user._id)}>Accept</button>
+              <button className="btn btn-error btn-xs text-md px-4 py-3" onClick={()=>rejectConnection(user._id)}>Reject</button>
+              <button className="btn btn-info btn-xs text-md px-4 py-3" onClick={()=>ignoreConnection(user._id)}>Ignore</button>
+
             </div>
            
           </li>
