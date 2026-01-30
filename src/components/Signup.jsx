@@ -38,6 +38,7 @@ function Signup() {
       setPassword("");
       setGender("");
       navigate("/login");
+      
 
     } catch (err) {
       setErrorMsg(err.response?.data?.message || "Something went wrong");
