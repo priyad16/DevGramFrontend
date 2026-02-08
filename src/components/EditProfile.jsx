@@ -25,99 +25,126 @@ function EditProfile() {
       console.log(res);
       dispatch(addUser(res.data.data));
       setToastMsg(res.data.message);
-    setTimeout(() => setToastMsg(""), 3000);
+      setTimeout(() => setToastMsg(""), 3000);
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <>
-    {toastMsg && (
-  <div className="toast toast-top toast-center">
-    <div className="alert alert-info">
-      <span>{toastMsg}</span>
-    </div>
-  </div>
-)}
-      
-      <div className="card w-96 m-auto my-3 border border-slate-600 bg-base-100 shadow-sm">
+    <div className="flex min-h-screen items-center justify-center bg-base-200 px-4 py-8" data-theme="nord">
+      {toastMsg && (
+        <div className="toast toast-top toast-center z-50">
+          <div className="alert alert-info shadow-lg">
+            <span>{toastMsg}</span>
+          </div>
+        </div>
+      )}
+
+      <div className="card w-full max-w-xl bg-base-100 shadow-xl transition-all duration-300 hover:shadow-2xl">
         <div className="card-body">
-          <div className="flex justify-center mb-4">
-            <h2 className="text-3xl font-bold">Edit Profile</h2>
+          <h2 className="card-title justify-center text-3xl font-bold text-primary mb-2">Edit Profile</h2>
+          <p className="text-center text-base-content/70 mb-6">Update your personal information.</p>
+
+          <div className="space-y-4">
+            {/* FIRST NAME */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">First Name</span>
+              </label>
+              <input
+                type="text"
+                className="input input-bordered focus:input-primary w-full"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+
+            {/* LAST NAME */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Last Name</span>
+              </label>
+              <input
+                type="text"
+                className="input input-bordered focus:input-primary w-full"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+
+            {/* AVATAR */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Avatar URL</span>
+              </label>
+              <input
+                type="text"
+                className="input input-bordered focus:input-primary w-full"
+                placeholder="Avatar URL"
+                value={avatar}
+                onChange={(e) => setAvatar(e.target.value)}
+              />
+            </div>
+
+            {/* BIO */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Bio</span>
+              </label>
+              <textarea
+                className="textarea textarea-bordered focus:textarea-primary h-24 w-full"
+                placeholder="Tell us about yourself"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              ></textarea>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* AGE */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-medium">Age</span>
+                </label>
+                <input
+                  type="number"
+                  className="input input-bordered focus:input-primary w-full"
+                  placeholder="Age"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                />
+              </div>
+
+              {/* GENDER */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-medium">Gender</span>
+                </label>
+                <input
+                  type="text"
+                  className="input input-bordered focus:input-primary w-full"
+                  placeholder="Gender"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                />
+              </div>
+            </div>
+
           </div>
 
-          {/* EMAIL FIELD */}
-          <fieldset className="fieldset">
-            <legend className="fieldset-legend">First Name</legend>
-            <input
-              type="text"
-              className="input"
-              placeholder="firstname"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </fieldset>
-
-          <fieldset className="fieldset">
-            <legend className="fieldset-legend">Last Name</legend>
-            <input
-              type="text"
-              className="input"
-              placeholder="last name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </fieldset>
-          <fieldset className="fieldset">
-            <legend className="fieldset-legend">Avatar</legend>
-            <input
-              type="text"
-              className="input"
-              placeholder="avatar"
-              value={avatar}
-              onChange={(e) => setAvatar(e.target.value)}
-            />
-          </fieldset>
-          <fieldset className="fieldset">
-            <legend className="fieldset-legend">Bio</legend>
-            <input
-              type="text"
-              className="input"
-              placeholder="bio"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-            />
-          </fieldset>
-          <fieldset className="fieldset">
-            <legend className="fieldset-legend">Age</legend>
-            <input
-              type="number"
-              className="input"
-              placeholder="age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            />
-          </fieldset>
-          <fieldset className="fieldset">
-            <legend className="fieldset-legend">Gender</legend>
-            <input
-              type="text"
-              className="input"
-              placeholder="gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-            />
-          </fieldset>
-
-          <div className="mt-6">
-            <button className="btn btn-primary btn-block" onClick={handleEdit}>
-              update profile
+          <div className="card-actions mt-8">
+            <button
+              className="btn btn-primary w-full text-lg shadow-md hover:shadow-lg transition-all"
+              onClick={handleEdit}
+            >
+              Update Profile
             </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default EditProfile;

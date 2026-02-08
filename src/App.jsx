@@ -9,25 +9,26 @@ import Feed from "./components/Feed";
 import EditProfile from "./components/EditProfile"
 import Connections from "./components/Connections"
 import FriendRequests from "./components/FriendRequests"
+import Landing from "./components/Landing"
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-  <Route path="/" element={<Main />}>
+          <Route path="/" element={<Main />}>
 
-    {/* Default page */}
-    <Route index element={<Signup />} />
+            {/* Default page */}
+            <Route index element={<Landing />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="login" element={<Login />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="feed" element={<Feed />} />
+            <Route path="editprofile" element={<EditProfile />} />
+            <Route path="connections" element={<Connections />} />
+            <Route path="friendreq" element={<FriendRequests />} />
 
-    <Route path="login" element={<Login />} />
-    <Route path="profile" element={<Profile />} />
-    <Route path="feed" element={<Feed />} />
-    <Route path="editprofile" element={<EditProfile />} />
-    <Route path="connections" element={<Connections />} />
-    <Route path="friendreq" element={<FriendRequests />} />
-
-  </Route>
-</Routes>
+          </Route>
+        </Routes>
 
       </BrowserRouter>
     </>

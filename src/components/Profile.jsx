@@ -3,91 +3,71 @@ import { Link } from "react-router";
 function Profile() {
   const user = useSelector((state) => state.user);
   return user ? (
-    <ul className="list bg-base-100 rounded-box shadow-md w-7/12 m-auto my-10">
-      {/* <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
-        Most played songs this week
-      </li> */}
+    <div className="flex min-h-[80vh] items-center justify-center bg-base-200 p-6" data-theme="nord">
+      <div className="card w-full max-w-2xl bg-base-100 shadow-xl overflow-hidden">
+        {/* Banner / Header Background */}
+        <div className="h-32 bg-primary/10 w-full"></div>
 
-      <li className="list-row gap-4 items-center">
-        <div>
-          <img className="size-10 rounded-box" src={user.avatar} />
-        </div>
-        <div>
-          <div className="text-md">{user.firstName}</div>
-          <div className="text-xs uppercase font-semibold opacity-60">
-            {user.bio}
-          </div>
-        </div>
-        <Link to="/editprofile">
-          <button
-            className="
-    px-4 py-2 
-    text-sm font-semibold tracking-wide
-    rounded-xl
-    bg-neutral-900 
-    text-gray-200 
-    border border-neutral-700
-    shadow-[0_4px_12px_rgba(255,255,255,0.08)]
-    hover:shadow-[0_6px_15px_rgba(255,255,255,0.15)]
-    hover:border-primary
-    hover:text-primary
-    transition-all duration-200
-  "
-          >
-            Edit Profile
-          </button>
-        </Link>
-
-        {/* <p className="list-col-wrap text-xs">
-          "Remaining Reason" became an instant hit, praised for its haunting
-          sound and emotional depth. A viral performance brought it widespread
-          recognition, making it one of Dio Lupa’s most iconic tracks.
-        </p> */}
-      </li>
-      {/* ⭐ Skills Section */}
-      <li className="p-6">
-        <div className="text-xl font-semibold mb-4 opacity-80 tracking-wide">
-          Skills
-        </div>
-
-        <div className="flex flex-wrap gap-6">
-          {user.skills.map((skill, index) => (
-            <div
-              key={index}
-              className="
-    flex items-center gap-4 
-    w-64 h-20
-    bg-neutral-900 
-    border border-neutral-700 
-    rounded-2xl 
-    px-5
-    shadow-[0_8px_20px_rgba(255,255,255,0.08)]
-    hover:shadow-[0_12px_25px_rgba(255,255,255,0.15)]
-    hover:scale-[1.02]
-    transition-all
-  "
-            >
-              {/* Number */}
-              <div className="text-2xl font-extrabold text-gray-300 flex-shrink-0">
-                {index < 10 ? "0" + (index + 1) : index + 1}
-              </div>
-
-              {/* Image */}
-              <div className="w-12 h-12 bg-neutral-800 border border-neutral-700 rounded-xl flex-shrink-0"></div>
-
-              {/* Skill name */}
-              <div className="flex items-center h-full">
-                <span className="text-base font-semibold text-gray-200 tracking-wide">
-                  {skill}
-                </span>
+        <div className="card-body pt-0 relative">
+          {/* Avatar & Header Info */}
+          <div className="flex flex-col sm:flex-row items-center sm:items-end -mt-16 mb-6 gap-6">
+            <div className="avatar ring ring-primary ring-offset-base-100 ring-offset-2 rounded-full shadow-lg">
+              <div className="w-32 rounded-full">
+                <img src={user.avatar} alt="Profile" />
               </div>
             </div>
-          ))}
+
+            <div className="text-center sm:text-left flex-1 mt-2 sm:mt-0">
+              <h2 className="text-3xl font-bold text-base-content">{user.firstName} {user.lastName}</h2>
+              <p className="font-medium text-primary mt-1">{user.bio || "Full Stack Developer"}</p>
+            </div>
+
+            <div className="mt-4 sm:mt-0">
+              <Link to="/editprofile">
+                <button className="btn btn-primary px-6 shadow-md hover:shadow-lg transition-all">
+                  Edit Profile
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          <div className="divider"></div>
+
+          {/* Details Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* About / Bio Placeholder if needed, currently using bio in header */}
+
+            {/* Skills Section */}
+            <div className="col-span-full">
+              <h3 className="text-lg font-bold text-base-content/80 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                Skills & Expertise
+              </h3>
+
+              <div className="flex flex-wrap gap-3">
+                {user.skills && user.skills.length > 0 ? (
+                  user.skills.map((skill, index) => (
+                    <div key={index} className="badge badge-lg badge-outline gap-2 p-4 hover:bg-primary hover:text-primary-content transition-colors cursor-default">
+                      <span className="font-bold opacity-50">{index + 1}.</span>
+                      {skill}
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-base-content/50 italic">No skills added yet.</p>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   ) : (
-    <h1>Please login to continue</h1>
+    <div className="flex min-h-[50vh] items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold text-base-content/70">Please login to continue</h1>
+        <Link to="/login" className="btn btn-link text-primary mt-2">Go to Login</Link>
+      </div>
+    </div>
   );
 }
 export default Profile;
