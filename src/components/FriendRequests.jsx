@@ -8,7 +8,7 @@ function FriendRequests() {
   useEffect(() => {
     async function getReq() {
       try {
-        const res = await axios.get("http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/user/friendreq", {
+        const res = await axios.get("/user/friendreq", {
           withCredentials: true
         })
         console.log(res);
@@ -22,7 +22,7 @@ function FriendRequests() {
   let acceptConnection = async (id) => {
     try {
       const res = await axios.patch(
-        "http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/connection/review",
+        "/connection/review",
         {
           connectionId: id,
           action: "accepted"
@@ -42,7 +42,7 @@ function FriendRequests() {
   let rejectConnection = async (id) => {
     try {
       const res = await axios.patch(
-        "http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/connection/review",
+        "/connection/review",
         {
           connectionId: id,
           action: "rejected"
@@ -62,7 +62,7 @@ function FriendRequests() {
   let ignoreConnection = async (id) => {
     try {
       const res = await axios.patch(
-        "http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/connection/review",
+        "/connection/review",
         {
           connectionId: id,
           action: "ignore"

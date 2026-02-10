@@ -13,7 +13,7 @@ function Main() {
   useEffect(() => {
     async function getUserData() {
       try {
-        const res = await axios.get("http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/profile/view", {
+        const res = await axios.get("/profile/view", {
           withCredentials: true,
         });
         console.log(res);

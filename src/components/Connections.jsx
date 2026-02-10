@@ -8,7 +8,7 @@ function Connections() {
     async function fetchConnections() {
       try {
         const res = await axios.get(
-          "http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/user/connections",
+          "/user/connections",
           { withCredentials: true }
         );
         setConnections(res.data.data);

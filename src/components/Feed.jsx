@@ -10,7 +10,7 @@ function Feed() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/user/feed", {
+        const res = await axios.get("/user/feed", {
           withCredentials: true,
         });
 
@@ -36,7 +36,7 @@ function Feed() {
 
   let sendConnection = async (id) => {
     try {
-      let res = await axios.post('http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/connection/' + "like" + "/" + id,
+      let res = await axios.post('/connection/' + "like" + "/" + id,
         {},
         {
           withCredentials: true
@@ -52,7 +52,7 @@ function Feed() {
   }
   let ignoreConnection = async (id) => {
     try {
-      let res = await axios.post('http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/connection/' + "ignore" + "/" + id,
+      let res = await axios.post('/connection/' + "ignore" + "/" + id,
         {},
         {
           withCredentials: true
