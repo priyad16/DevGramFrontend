@@ -18,7 +18,8 @@ function EditProfile() {
   const handleEdit = async () => {
     try {
       const res = await axios.patch(
-        "http://localhost:3000/profile/edit",
+        "http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com
+/profile/edit",
         { firstName, lastName, avatar, bio, age, gender },
         { withCredentials: true }
       );

@@ -13,7 +13,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/auth/logout", {},
+        "http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com/auth/logout", {},
         {
           withCredentials: true
         }

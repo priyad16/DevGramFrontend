@@ -19,7 +19,8 @@ function Login() {
   const handleClick = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/auth/login",
+        "http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com
+/auth/login",
         { email, password },
         { withCredentials: true }
       );

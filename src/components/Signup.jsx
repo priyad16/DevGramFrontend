@@ -18,7 +18,8 @@ function Signup() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/auth/signup",
+        "http://ec2-13-53-32-227.eu-north-1.compute.amazonaws.com
+/auth/signup",
         {
           firstName,
           lastName,
