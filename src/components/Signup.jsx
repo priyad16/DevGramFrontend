@@ -18,7 +18,7 @@ function Signup() {
 
     try {
       const res = await axios.post(
-        "/auth/signup",
+        "/api/auth/signup",
         {
           firstName,
           lastName,

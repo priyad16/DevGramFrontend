@@ -13,7 +13,7 @@ function Main() {
   useEffect(() => {
     async function getUserData() {
       try {
-        const res = await axios.get("/profile/view", {
+        const res = await axios.get("api/profile/view", {
           withCredentials: true,
         });
         console.log(res);

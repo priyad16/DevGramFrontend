@@ -8,7 +8,7 @@ function Connections() {
     async function fetchConnections() {
       try {
         const res = await axios.get(
-          "/user/connections",
+          "/api/user/connections",
           { withCredentials: true }
         );
         setConnections(res.data.data);

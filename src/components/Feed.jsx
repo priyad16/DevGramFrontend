@@ -10,7 +10,7 @@ function Feed() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("/user/feed", {
+        const res = await axios.get("api/user/feed", {
           withCredentials: true,
         });
 
@@ -36,7 +36,7 @@ function Feed() {
 
   let sendConnection = async (id) => {
     try {
-      let res = await axios.post('/connection/' + "like" + "/" + id,
+      let res = await axios.post('api/connection/' + "like" + "/" + id,
         {},
         {
           withCredentials: true
@@ -52,7 +52,7 @@ function Feed() {
   }
   let ignoreConnection = async (id) => {
     try {
-      let res = await axios.post('/connection/' + "ignore" + "/" + id,
+      let res = await axios.post('api/connection/' + "ignore" + "/" + id,
         {},
         {
           withCredentials: true

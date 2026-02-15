@@ -18,7 +18,7 @@ function EditProfile() {
   const handleEdit = async () => {
     try {
       const res = await axios.patch(
-        "/profile/edit",
+        "/api/profile/edit",
         { firstName, lastName, avatar, bio, age, gender },
         { withCredentials: true }
       );

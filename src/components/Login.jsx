@@ -19,7 +19,7 @@ function Login() {
   const handleClick = async () => {
     try {
       const res = await axios.post(
-        "/auth/login",
+        "/api/auth/login",
         { email, password },
         { withCredentials: true }
       );
